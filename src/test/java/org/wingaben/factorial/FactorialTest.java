@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * factorial 2 --> 2 *
  * factorial 3 --> 6 *
  * factorial 6 --> 720 *
- * factorial negative number --> raises an exception
+ * factorial negative number --> raises an exception *
  */
 
 class FactorialTest {
