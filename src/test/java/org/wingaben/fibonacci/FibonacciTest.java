@@ -13,10 +13,10 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
  * fibonacci 0 --> 0 *
  * fibonacci 1 --> 1 *
  * fibonacci 2 --> 1 *
- * fibonacci 3 --> 2
- * fibonacci 4 --> 3
- * fibonacci 5 --> 5
- * fibonacci negative number --> raises an exception
+ * fibonacci 3 --> 2 *
+ * fibonacci 4 --> 3 *
+ * fibonacci 5 --> 5 *
+ * fibonacci negative number --> raises an exception *
  */
 
 public class FibonacciTest {
@@ -81,7 +81,7 @@ public class FibonacciTest {
     }
 
     @Test
-    public void testComputeOfANegativeNumerRaisesAnException(){
+    public void testComputeOfANegativeNumberRaisesAnException(){
         assertThrows(RuntimeException.class, ()->fibonacci.compute(-1)) ;
     }
 }

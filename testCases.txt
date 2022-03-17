@@ -1,0 +1,11 @@
+/**
+ * Test cases:
+ * secondNode.getPrevious --> firstNode *
+ * secondNode.getNext --> thirdNode *
+ * secondNode.getItem --> newItem *
+ * firstNode.isFirstNode --> true *
+ * thirdNode.isLastNode --> true *
+ * secondNode.isNotATerminalNode --> true *
+ * setNext --> newNext *
+ * setPrevious --> newPrevious *
+ */
