@@ -51,7 +51,7 @@ class FactorialTest {
     @DisplayName("returns two if number is two")
     @Test
     public void testComputeReturnTwoIfTheNumberIsTwo(){
-        int expectedValue=2;
+        int expectedValue = 2;
         int obtainedValue = factorial.compute(2);
 
         assertEquals(expectedValue, obtainedValue);
@@ -77,7 +77,7 @@ class FactorialTest {
 
     @DisplayName("returns RuntimeException if negative number")
     @Test
-    public void testComputeOfANegativeNumerRaisesAnException(){
+    public void testComputeOfANegativeNumberRaisesAnException(){
         assertThrows(RuntimeException.class, ()->factorial.compute(-1)) ;
     }
 

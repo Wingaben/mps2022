@@ -1,112 +1,73 @@
 package org.wingaben.doubleendedqueue;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Test cases:
- * secondNode.getPrevious --> firstNode *
- * secondNode.getNext --> thirdNode *
- * secondNode.getItem --> newItem *
- * firstNode.isFirstNode --> true *
- * thirdNode.isLastNode --> true *
- * secondNode.isNotATerminalNode --> true *
- * setNext --> newNext *
- * setPrevious --> newPrevious *
- */
-
-public class DequeNodeTest<T> {
-    T item;
-    DequeNode firstNode ;
-    DequeNode secondNode ;
-    DequeNode thirdNode ;
-    T newItem;
-    DequeNode<T> newNext;
-    DequeNode<T> newPrevious;
-
-    @BeforeEach
-    public void setup(){
-        firstNode = new DequeNode(item, secondNode, null) ;
-        thirdNode = new DequeNode(item, null, secondNode) ;
-        secondNode = new DequeNode(item, thirdNode, firstNode) ;
-    }
-
-    @AfterEach
-    public void finish(){
-        firstNode = null ;
-        secondNode = null ;
-        thirdNode = null ;
-    }
+public class DequeNodeTest {
 
     @Test
-    public void testComputeReturnsPreviousNode(){
-        DequeNode<T> expectedValue = firstNode;
-        DequeNode<T> obtainedValue = secondNode.getPrevious();
+    public void shouldConstructorAssignedTheCorrectValue() {
+        var node = new DequeNode<>(1, null, null);
+        int expectedValue = 1;
+        int obtainedValue = node.getItem();
 
         assertEquals(expectedValue, obtainedValue);
+        assertNull(node.getPrevious());
+        assertNull(node.getNext());
     }
 
     @Test
-    public void testComputeReturnsNextNode(){
-        DequeNode<T> expectedValue = thirdNode;
-        DequeNode<T> obtainedValue = secondNode.getNext();
+    public void shouldConstructorInitializeNodeWithPreviousAndNext() {
+        var previousNode = new DequeNode<>(1, null, null);
+        var nextNode = new DequeNode<>(3, null, null);
+        var currentNode = new DequeNode<>(2, nextNode, previousNode);
 
-        assertEquals(expectedValue, obtainedValue);
+        // we use assertSame because assertEquals returns correct test
+        // with different nodes and same values
+        assertSame(previousNode, currentNode.getPrevious());
+        assertSame(nextNode, currentNode.getNext());
     }
 
     @Test
-    public void testComputeReturnsItem(){
-        firstNode.setItem(newItem);
-        T expectedValue = newItem;
-        T obtainedValue = (T) firstNode.getItem();
+    public void shouldReturnIsFirstNode(){
+        var firstNode = new DequeNode<>(1, null, null) ;
+        var thirdNode = new DequeNode<>(3, null, null) ;
+        var secondNode = new DequeNode<>(2, thirdNode, firstNode) ;
+        firstNode.setNext(secondNode);
+        thirdNode.setPrevious(secondNode);
 
-        assertEquals(expectedValue, obtainedValue);
-    }
-
-    @Test
-    public void testComputeReturnsFirstNode(){
         assertTrue(firstNode.isFirstNode());
     }
 
     @Test
-    public void testComputeReturnsLastNode(){
+    public void shouldReturnIsLastNode(){
+        var firstNode = new DequeNode<>(1, null, null) ;
+        var thirdNode = new DequeNode<>(3, null, null) ;
+        var secondNode = new DequeNode<>(2, thirdNode, firstNode) ;
+        firstNode.setNext(secondNode);
+        thirdNode.setPrevious(secondNode);
+
         assertTrue(thirdNode.isLastNode());
     }
 
     @Test
-    public void testComputeReturnsNotTerminalNode(){
+    public void shouldReturnIsNotTerminalNode(){
+        var firstNode = new DequeNode<>(1, null, null) ;
+        var thirdNode = new DequeNode<>(3, null, null) ;
+        var secondNode = new DequeNode<>(2, thirdNode, firstNode) ;
+        firstNode.setNext(secondNode);
+        thirdNode.setPrevious(secondNode);
+
         assertTrue(secondNode.isNotATerminalNode());
     }
 
-    /*@Test
-    public void testComputeReturnsSameItem(){
-        firstNode.setItem(newItem);
-        T expectedValue = newItem;
-        T obtainedValue = (T) firstNode.getItem();
-
-        assertEquals(expectedValue, obtainedValue);
-    }*/
-
     @Test
-    public void testComputeReturnsSameNextNode(){
-        firstNode.setNext(newNext);
-        DequeNode<T> expectedValue = newNext;
-        DequeNode<T> obtainedValue = firstNode.getNext();
+    public void shouldReturnItem(){
+        var firstNode = new DequeNode<>(null, null,null);
+        firstNode.setItem(1);
+        int expectedValue = 1;
+        int obtainedValue = (int) firstNode.getItem();
 
         assertEquals(expectedValue, obtainedValue);
     }
-
-    @Test
-    public void testComputeReturnsSamePreviousNode() {
-        secondNode.setPrevious(newPrevious);
-        DequeNode<T> expectedValue = newPrevious;
-        DequeNode<T> obtainedValue = secondNode.getPrevious();
-
-        assertEquals(expectedValue, obtainedValue);
-    }
-
-
 }

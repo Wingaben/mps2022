@@ -1,7 +1,7 @@
 package org.wingaben.fibonacci;
 
 /**
- * Class providing a method that computes the fibonnaci sucesion of a number
+ * Class providing a method that computes the fibonacci succession of a number
  *
  * @author José Luis Quiñones N.
  */
